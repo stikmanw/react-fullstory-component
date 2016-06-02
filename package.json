@@ -13,7 +13,7 @@
     "third-party"
   ],
   "author": "Ben Carter <bcarter@redventures.com>",
-  "license": "ISC",
+  "license": "MIT",
   "babel": {
     "presets": [
       "es2015",
