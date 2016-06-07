@@ -4,7 +4,7 @@
 import jsdom from 'jsdom';
 import { assert } from 'chai';
 import sinon from 'sinon';
-import cheerio from 'enzyme/node_modules/cheerio';
+import cheerio from 'cheerio';
 import { FullStoryClient } from '../index';
 import { FULLSTORY_CODE } from '../src/snippets/fullstory.js';
 
