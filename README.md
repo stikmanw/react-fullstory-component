@@ -24,7 +24,7 @@ const data = {
 };
 
 const sessionId = '123456789';
-const jsx = '<FullStory settings={settings} sessionId={sessionId} custom={data} />';
+const jsx = <FullStory settings={settings} sessionId={sessionId} custom={data} />;
 ```
 
 #### IFrame Example
@@ -36,7 +36,7 @@ const settings = {
     iframe: true
 };
 const sessionId = '123456789';
-const jsx = '<FullStory settings={settings} sessionId={sessionId} />';
+const jsx = <FullStory settings={settings} sessionId={sessionId} />;
 ```
 
 ## API Reference

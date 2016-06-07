@@ -5,7 +5,7 @@ import { assert } from 'chai';
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import cheerio from 'enzyme/node_modules/cheerio';
-import FullStory from '../src/component/fullstory';
+import { FullStory } from '../index';
 
 describe('<Fullstory /> Component Tests', function() {
     beforeEach(function () {
