@@ -37,10 +37,15 @@ function setWatcher(client) {
  */
 function registerGlobals(settings, window) {
     const windowRef = window;
-    windowRef['_fs_debug'] = settings.debug;
-    windowRef['_fs_host'] = settings.host;
-    windowRef['_fs_org'] = settings.orgKey;
-    windowRef['_fs_run_in_iframe'] = settings.iframe;
+
+    if(! typeof window !== 'object') {
+        throw new TypeError('global window object should be passed into constructor as it required');
+    }
+
+    windowRef['_fs_debug'] = settings.debug || false;
+    windowRef['_fs_host'] = settings.host || 'www.fullstory.com';
+    windowRef['_fs_org'] = settings.orgKey || null;
+    windowRef['_fs_run_in_iframe'] = settings.iframe || false;
 }
 
 /**
