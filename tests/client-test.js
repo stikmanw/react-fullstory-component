@@ -12,8 +12,8 @@ describe('FullStory Lib Tests', function () {
     // setup a fresh dom each time to keep our test state clean
     beforeEach(function () {
         global.document = jsdom.jsdom('<!doctype html><html><head></head><body></body></html>');
-        global.window = document.parentWindow;
         global.navigator = { userAgent: 'node.js' };
+        global.window = global.document.defaultView;
 
         // need to simulate an external FS client for fullstory
         global.window.FS = {};

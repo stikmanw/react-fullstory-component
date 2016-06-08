@@ -10,7 +10,7 @@ import { FullStory } from '../index';
 describe('<Fullstory /> Component Tests', function() {
     beforeEach(function () {
         global.document = jsdom.jsdom('<!doctype html><html><head></head><body></body></html>');
-        global.window = document.parentWindow;
+        global.window = document.defaultView;
         global.navigator = { userAgent: 'node.js' };
     });
 
