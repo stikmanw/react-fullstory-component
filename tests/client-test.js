@@ -5,7 +5,7 @@ import jsdom from 'jsdom';
 import { assert } from 'chai';
 import sinon from 'sinon';
 import cheerio from 'cheerio';
-import { FullStoryClient } from '../index';
+import { FullStoryClient } from '../src/index';
 import { FULLSTORY_CODE } from '../src/snippets/fullstory.js';
 
 describe('FullStory Lib Tests', function () {
