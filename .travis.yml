@@ -1,5 +1,7 @@
 sudo: false
 language: node_js
+before_script:
+  - npm install react@0.13.3
 node_js:
   - '4'
   - '5'
