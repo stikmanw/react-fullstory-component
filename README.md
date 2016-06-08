@@ -1,4 +1,4 @@
-## Synopsis
+## Synopsis [![Build Status](https://travis-ci.org/stikmanw/react-fullstory-component.svg?branch=master)](https://travis-ci.org/stikmanw/react-fullstory-component)
 
 This is a ReactJS Component and library that is used bring [FullStory](https://fullstory.com/) into your webpage.
 
