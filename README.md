@@ -46,7 +46,8 @@ IF you want to just use the wrapper library around used by the component, the fo
 ```
 
 ## Tests
-* Requires Node Version 4+ to run tests. 
+* Requires Node Version 4+ to run tests.
+ 
 There are two scripts to run test
 ```
 npm run test
