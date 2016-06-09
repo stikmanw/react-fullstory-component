@@ -12,6 +12,13 @@ describe('<Fullstory /> Component Tests', function() {
         global.document = jsdom.jsdom('<!doctype html><html><head></head><body></body></html>');
         global.window = document.defaultView;
         global.navigator = { userAgent: 'node.js' };
+
+        global.window.FS = {};
+        global.window.FS.clearUserCookie = function() { };
+        global.window.FS.identify = function (id, data) {
+            global.window.myTestId = id;
+            global.window.myTestData = data;
+        };
     });
 
     it('should throw an error if the organization key is not set', function() {
