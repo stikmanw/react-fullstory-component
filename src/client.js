@@ -125,7 +125,9 @@ export default class fullstoryClient {
      * This clears the browser cookie session for the user
      */
     clearUserSession() {
-        this.window.FS.clearUserCookie();
+        if(this.window && this.window.FS && this.window.FS.clearUserCookie) {
+            this.window.FS.clearUserCookie();
+        }
     }
 
     /**
