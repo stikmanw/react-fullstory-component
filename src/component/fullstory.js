@@ -18,6 +18,7 @@ class FullStory extends React.Component {
             this.fullStoryClient.render();
         }
 
+        this.fullStoryClient.clearUserSession();
         // set out initial session based on the props passed in
         this.fullStoryClient.setSession(this.props.sessionId, this.props.custom);
     }
@@ -25,8 +26,11 @@ class FullStory extends React.Component {
     shouldComponentUpdate(nextProps, nextState) {
         if(nextProps.sessionId !== this.props.sessionId) {
             this.fullStoryClient.clearUserSession();
-            this.fullStoryClient.setSessionId(nextProps.sessionId, nextProps.custom);
+            this.fullStoryClient.setSession(nextProps.sessionId, nextProps.custom);
+            return true;
         }
+
+        return false;
     }
 
     render() {
