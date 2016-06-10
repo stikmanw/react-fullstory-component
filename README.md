@@ -7,7 +7,7 @@
 
 
 ## Synopsis
-This is a ReactJS Component and library that is used bring FullStory into your webpage.
+This is a ReactJS Component and library for integrating FullStory into your ReactJS Application or customer JavaScript application.
 
 ## Motivation
 
@@ -20,7 +20,7 @@ npm install react-fullstory-component
 
 ## Compatible Version
 * React 0.13.3
-* 0.14 with warnings ( will addres warnings in 2.0.0 release )
+* 0.14 with warnings ( will address the warnings in 2.0.0 release )
 
 ## Component Code Examples
 #### Basic Example
