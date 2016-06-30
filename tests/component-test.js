@@ -23,12 +23,12 @@ describe('<Fullstory /> Component Tests', function() {
 
     it('should throw an error if the organization key is not set', function() {
         assert.throws(function() {
-             mount(<FullStory />);
+             mount(<FullStory sessionId='test' />);
         }, TypeError);
     });
 
     it('should allow prop:settings', function () {
-        const wrapper = mount(<FullStory settings={{ debug: true, orgKey: '1234' }} />);
+        const wrapper = mount(<FullStory settings={{ debug: true, orgKey: '1234' }} sessionId='test'/>);
         assert.deepEqual({ debug: true, orgKey: '1234' }, wrapper.props().settings);
     });
 
@@ -38,7 +38,7 @@ describe('<Fullstory /> Component Tests', function() {
     });
 
     it('should allow props:custom', function () {
-        const wrapper = mount(<FullStory settings={{ orgKey: '1234' }} custom={{ foo: 'bar' }} />);
+        const wrapper = mount(<FullStory settings={{ orgKey: '1234' }} sessionId='test' custom={{ foo: 'bar' }} />);
         assert.deepEqual({ foo: 'bar' }, wrapper.props().custom);
     });
 

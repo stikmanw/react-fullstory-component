@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb/base",
+    "extends": "airbnb/index",
     "rules": {
         "indent": [
             2,

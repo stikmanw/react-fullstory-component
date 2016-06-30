@@ -1,6 +1,7 @@
 /* eslint prefer-arrow-callback: "off" */
 /* eslint func-names: "off" */
 /* eslint dot-notation: 0 */
+/* eslint max-len: 0 */
 import jsdom from 'jsdom';
 import { assert } from 'chai';
 import sinon from 'sinon';
@@ -40,6 +41,7 @@ describe('FullStory Lib Tests', function () {
         }, global.window);
 
         client.render();
+
         assert.equal(false, global.window['_fs_debug']);
         assert.equal('www.fullstory.com', global.window['_fs_host']);
         assert.equal('is-real', global.window['_fs_org']);
@@ -108,6 +110,20 @@ describe('FullStory Lib Tests', function () {
         }, global.window);
 
         assert.deepEqual([mock], client.getSessionCallbacks());
+    });
+
+    it('should allow me to set a global variable for iframe only using option iframeOnly', function () {
+        const mock = function mockery() {};
+        const client = new FullStoryClient({
+            debug: false,
+            host: 'www.test-fullstory.com',
+            orgKey: 'not-real',
+            iframeOnly: true,
+            sessionCallbacks: [mock]
+        }, global.window);
+
+        client.isLoaded();
+        assert.equal(global.window['_fs_is_outer_script'], true);
     });
 
     it('should allow me to append new callbacks', function () {

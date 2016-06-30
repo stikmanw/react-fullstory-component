@@ -42,6 +42,7 @@ function registerGlobals(settings, window) {
     windowRef['_fs_host'] = settings.host || 'www.fullstory.com';
     windowRef['_fs_org'] = settings.orgKey || null;
     windowRef['_fs_run_in_iframe'] = settings.iframe || false;
+    windowRef['_fs_is_outer_script'] = settings.iframeOnly || false;
 }
 
 /**
@@ -125,7 +126,7 @@ export default class fullstoryClient {
      * This clears the browser cookie session for the user
      */
     clearUserSession() {
-        if(this.window && this.window.FS && this.window.FS.clearUserCookie) {
+        if (this.window && this.window.FS && this.window.FS.clearUserCookie) {
             this.window.FS.clearUserCookie();
         }
     }

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, warning } from 'react';
+import React, { Component, PropTypes } from 'react';
 import FullStoryClient from '../client';
 
 /**
@@ -14,7 +14,7 @@ class FullStory extends React.Component {
         // initialize the fullstory client not the need to use a global variable here yuck
         this.fullStoryClient = new FullStoryClient(this.props.settings, window);
 
-        if(typeof window.FS === 'undefined') {
+        if (typeof window.FS === 'undefined') {
             this.fullStoryClient.render();
         }
 
@@ -23,8 +23,8 @@ class FullStory extends React.Component {
         this.fullStoryClient.setSession(this.props.sessionId, this.props.custom);
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps.sessionId !== this.props.sessionId) {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.sessionId !== this.props.sessionId) {
             this.fullStoryClient.clearUserSession();
             this.fullStoryClient.setSession(nextProps.sessionId, nextProps.custom);
             return true;
@@ -34,21 +34,21 @@ class FullStory extends React.Component {
     }
 
     render() {
-		return (
-           <div className="fullstory"/>
+        return (
+          <div className="fullstory" />
         );
     }
 }
 
-FullStory.PropTypes = {
-   settings: PropTypes.shape({
-       debug: PropTypes.bool,
-       host: PropTypes.string,
-       orgKey: PropTypes.string,
-       iframe: PropTypes.bool
-   }),
-   sessionId: PropTypes.string,
-   custom: PropTypes.object
+FullStory.propTypes = {
+    settings: PropTypes.shape({
+        debug: PropTypes.bool,
+        host: PropTypes.string,
+        orgKey: PropTypes.string,
+        iframe: PropTypes.bool
+    }).isRequired,
+    sessionId: PropTypes.string.isRequired,
+    custom: PropTypes.object
 };
 
 FullStory.defaultProps = {
@@ -60,6 +60,6 @@ FullStory.defaultProps = {
     },
     sessionId: null,
     custom: {}
-}
+};
 
 export default FullStory;
