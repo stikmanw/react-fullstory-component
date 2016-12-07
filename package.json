@@ -1,6 +1,6 @@
 {
   "name": "react-fullstory-component",
-  "version": "1.2.4",
+  "version": "2.0.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "chai": "^3.5.0",
     "cheerio": "^0.20.0",
     "coveralls": "^2.11.9",
-    "enzyme": "^2.3.0",
+    "enzyme": "^2.6.0",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.9.2",
@@ -40,11 +40,13 @@
     "jsdom": "latest",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
+    "react-addons-test-utils": "^15.4.1",
     "rimraf": "^2.5.2",
     "sinon": "^1.17.4"
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "0.13.3"
+    "react": "15.4.1",
+    "react-dom": "15.4.1"
   }
 }
