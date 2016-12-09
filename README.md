@@ -19,8 +19,11 @@ npm install react-fullstory-component
 ```
 
 ## Compatible Version
-* React 0.13.3
-* 0.14 with warnings ( will address the warnings in 2.0.0 release )
+* React 0.13.3 1.0+ 
+* React 15+ 2.0+
+
+Make sure you install the correct verson depending on which version of react your are running.  Thanks to Thinh for updating the component to work with React 15. 
+
 
 ## Component Code Examples
 #### Basic Example
