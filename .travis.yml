@@ -4,6 +4,6 @@ before_script:
   - npm install react@15.4.1
   - npm install react-dom@15.4.1
 node_js:
-  - '4'
+  - '4.4.x'
   - '5'
   - '6'
