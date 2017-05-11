@@ -44,7 +44,10 @@
     "rimraf": "^2.5.2",
     "sinon": "^1.17.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
   "peerDependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
