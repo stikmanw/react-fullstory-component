@@ -1,6 +1,6 @@
 {
   "name": "react-fullstory-component",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -46,8 +46,8 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "15.4.1",
-    "react-dom": "15.4.1"
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
   },
   "optionalDependencies": {
     "fsevents": "*"
