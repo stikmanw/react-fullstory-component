@@ -1,6 +1,6 @@
 {
   "name": "react-fullstory-component",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -37,17 +37,20 @@
     "eslint-plugin-import": "^1.9.2",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.1.1",
-    "jsdom": "latest",
+    "jsdom": "9.12.0",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
+    "prop-types": "^15.5.10",
     "react-addons-test-utils": "15.4.1",
     "rimraf": "^2.5.2",
-    "sinon": "^1.17.4"
+    "sinon": "^1.17.4",
+    "react": "15.x.x",
+    "react-dom": "15.x.x"
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react": "15.x.x",
+    "react-dom": "15.x.x"
   },
   "optionalDependencies": {
     "fsevents": "*"
