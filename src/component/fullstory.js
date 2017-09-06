@@ -19,13 +19,15 @@ class FullStory extends Component {
             this.fullStoryClient.render();
         }
 
-        this.fullStoryClient.clearUserSession();
-        // set out initial session based on the props passed in
-        this.fullStoryClient.setSession(this.props.sessionId, this.props.custom);
+        if (this.props.sessionId) {
+            this.fullStoryClient.clearUserSession();
+            // set out initial session based on the props passed in
+            this.fullStoryClient.setSession(this.props.sessionId, this.props.custom);   
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.sessionId !== this.props.sessionId) {
+        if (nextProps.sessionId && nextProps.sessionId !== this.props.sessionId) {
             this.fullStoryClient.clearUserSession();
             this.fullStoryClient.setSession(nextProps.sessionId, nextProps.custom);
             return true;
@@ -48,7 +50,7 @@ FullStory.propTypes = {
         orgKey: PropTypes.string,
         iframe: PropTypes.bool
     }).isRequired,
-    sessionId: PropTypes.string.isRequired,
+    sessionId: PropTypes.string,
     custom: PropTypes.object
 };
 
