@@ -6,7 +6,6 @@ import FullStoryClient from '../client';
  * This is a react component that will inject the necessary code into a page for tracking via
  */
 class FullStory extends Component {
-
     /**
      * On mount we will inject our javacript settings based on the settings we have in the
      * system.
@@ -35,9 +34,7 @@ class FullStory extends Component {
     }
 
     render() {
-        return (
-          <div className="fullstory" />
-        );
+        return <div className="fullstory" />;
     }
 }
 

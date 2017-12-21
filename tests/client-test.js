@@ -9,9 +9,9 @@ import cheerio from 'cheerio';
 import { FullStoryClient } from '../src/index';
 import { FULLSTORY_CODE } from '../src/snippets/fullstory.js';
 
-describe('FullStory Lib Tests', function () {
+describe('FullStory Lib Tests', function() {
     // setup a fresh dom each time to keep our test state clean
-    beforeEach(function () {
+    beforeEach(function() {
         global.document = jsdom.jsdom('<!doctype html><html><head></head><body></body></html>');
         global.navigator = { userAgent: 'node.js' };
         global.window = global.document.defaultView;
@@ -19,26 +19,29 @@ describe('FullStory Lib Tests', function () {
         // need to simulate an external FS client for fullstory
         global.window.FS = {};
 
-        global.window.FS.identify = function (id, data) {
+        global.window.FS.identify = function(id, data) {
             global.window.myTestId = id;
             global.window.myTestData = data;
         };
 
-        global.window.FS.getSessionURL = function () {
+        global.window.FS.getSessionURL = function() {
             return `www.test-fullstory.com/${global.window.myTestId}`;
         };
 
-        global.window.FS.simulateReady = function () {
+        global.window.FS.simulateReady = function() {
             global.window['_fs_ready'].call();
         };
     });
 
-    it('should inject global fullstory variables onto window', function () {
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.fullstory.com',
-            orgKey: 'is-real'
-        }, global.window);
+    it('should inject global fullstory variables onto window', function() {
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.fullstory.com',
+                orgKey: 'is-real'
+            },
+            global.window
+        );
 
         client.render();
 
@@ -47,12 +50,15 @@ describe('FullStory Lib Tests', function () {
         assert.equal('is-real', global.window['_fs_org']);
     });
 
-    it('should inject the client code a script tag into the head', function () {
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+    it('should inject the client code a script tag into the head', function() {
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.render();
 
@@ -61,25 +67,33 @@ describe('FullStory Lib Tests', function () {
         assert.equal(FULLSTORY_CODE, actual);
     });
 
-    it('should inject the external client code based on url set', function () {
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+    it('should inject the external client code based on url set', function() {
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.render();
         const $ = cheerio.load(global.window.document.documentElement.innerHTML);
-        const actual = $('script').first().attr('src');
+        const actual = $('script')
+            .first()
+            .attr('src');
         assert.equal('https://www.test-fullstory.com/s/fs.js', actual);
     });
 
-    it('should allow me to set a session and data', function () {
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+    it('should allow me to set a session and data', function() {
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.setSession('test1234', {});
         assert.equal('test1234', client.sessionId);
@@ -89,78 +103,96 @@ describe('FullStory Lib Tests', function () {
         assert.deepEqual({ foo: 'bar' }, global.window.myTestData);
     });
 
-    it('should allow me to get a sessionId', function () {
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+    it('should allow me to get a sessionId', function() {
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.sessionId = 'test1234';
         assert.equal('test1234', client.getSession());
     });
 
-    it('should allow me to get session callbacks', function () {
+    it('should allow me to get session callbacks', function() {
         const mock = function mockery() {};
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real',
-            sessionCallbacks: [mock]
-        }, global.window);
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real',
+                sessionCallbacks: [mock]
+            },
+            global.window
+        );
 
         assert.deepEqual([mock], client.getSessionCallbacks());
     });
 
-    it('should allow me to set a global variable for iframe only using option iframeOnly', function () {
+    it('should allow me to set a global variable for iframe only using option iframeOnly', function() {
         const mock = function mockery() {};
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real',
-            iframeOnly: true,
-            sessionCallbacks: [mock]
-        }, global.window);
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real',
+                iframeOnly: true,
+                sessionCallbacks: [mock]
+            },
+            global.window
+        );
 
         client.isLoaded();
         assert.equal(global.window['_fs_is_outer_script'], true);
     });
 
-    it('should allow me to append new callbacks', function () {
+    it('should allow me to append new callbacks', function() {
         const mock = function mockery() {};
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real',
-            sessionCallbacks: [mock]
-        }, global.window);
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real',
+                sessionCallbacks: [mock]
+            },
+            global.window
+        );
 
         client.onLoad(mock);
         assert.deepEqual([mock, mock], client.getSessionCallbacks());
     });
 
-    it('should get a sessionURL after load', function (done) {
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+    it('should get a sessionURL after load', function(done) {
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.setSession('test1234');
         global.window.FS.simulateReady();
-        client.getSessionUrl(function (url) {
+        client.getSessionUrl(function(url) {
             assert.equal('www.test-fullstory.com/test1234', url);
             done();
         });
     });
 
-    it('should not get a session url if not loaded', function (done) {
+    it('should not get a session url if not loaded', function(done) {
         const spy = sinon.spy();
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.setSession('test1234');
         client.getSessionUrl(spy);
@@ -169,16 +201,17 @@ describe('FullStory Lib Tests', function () {
         done();
     });
 
-    it('isLoaded return true / false when fullstory is done registering', function () {
+    it('isLoaded return true / false when fullstory is done registering', function() {
         const spy = sinon.spy();
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real',
-            sessionCallbacks: [
-                spy
-            ]
-        }, global.window);
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real',
+                sessionCallbacks: [spy]
+            },
+            global.window
+        );
 
         assert.isFalse(client.isLoaded());
 
@@ -187,13 +220,16 @@ describe('FullStory Lib Tests', function () {
         assert.isTrue(client.isLoaded());
     });
 
-    it('onLoad will call my callback 1 time', function () {
+    it('onLoad will call my callback 1 time', function() {
         const spy = sinon.spy();
-        const client = new FullStoryClient({
-            debug: false,
-            host: 'www.test-fullstory.com',
-            orgKey: 'not-real'
-        }, global.window);
+        const client = new FullStoryClient(
+            {
+                debug: false,
+                host: 'www.test-fullstory.com',
+                orgKey: 'not-real'
+            },
+            global.window
+        );
 
         client.onLoad(spy);
         global.window.FS.simulateReady();

@@ -58,12 +58,11 @@ function registerGlobals(settings, window) {
  * });
  */
 export default class fullstoryClient {
-
     constructor(settings, window) {
         this.window = window;
         this.settings = settings || {};
         this.loaded = false;
-        this.sessionCallbacks = (settings.sessionCallbacks) ? settings.sessionCallbacks : [];
+        this.sessionCallbacks = settings.sessionCallbacks ? settings.sessionCallbacks : [];
 
         if (typeof this.settings.orgKey !== 'string') {
             throw new TypeError('"setting.orgKey must be a valid string organization key');

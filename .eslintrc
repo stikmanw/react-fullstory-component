@@ -1,5 +1,9 @@
 {
-    "extends": "airbnb/index",
+    "extends": [
+        "airbnb/index"
+        "prettier",
+        "prettier/react"
+    ],
     "rules": {
         "indent": [
             2,
