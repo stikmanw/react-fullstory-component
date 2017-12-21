@@ -41,6 +41,7 @@ function registerGlobals(settings, window) {
     windowRef['_fs_debug'] = settings.debug || false;
     windowRef['_fs_host'] = settings.host || 'www.fullstory.com';
     windowRef['_fs_org'] = settings.orgKey || null;
+    windowRef['_fs_namespace'] = settings.namespace || 'FS';
     windowRef['_fs_run_in_iframe'] = settings.iframe || false;
     windowRef['_fs_is_outer_script'] = settings.iframeOnly || false;
 }
