@@ -3,8 +3,7 @@
 import jsdom from 'jsdom';
 import { assert } from 'chai';
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
-import cheerio from 'cheerio';
+import { shallow, mount } from 'enzyme';
 import { FullStory } from '../src/index';
 
 describe('<Fullstory /> Component Tests', function() {
