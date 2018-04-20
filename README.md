@@ -7,7 +7,7 @@
 
 
 ## Synopsis
-This is a ReactJS Component and library for integrating FullStory into your ReactJS Application or customer JavaScript application.
+This is a ReactJS Component and library for integrating FullStory into your ReactJS Application or custom JavaScript application.
 
 ## Motivation
 
@@ -19,10 +19,10 @@ npm install react-fullstory-component
 ```
 
 ## Compatible Version
-* React 0.13.3 1.0+ 
+* React 0.13.3 1.0+
 * React 15+ 2.0+
 
-Make sure you install the correct verson depending on which version of react your are running.  Thanks to Thinh for updating the component to work with React 15. 
+Make sure you install the correct version depending on which version of React you are running. Thanks to Thinh for updating the component to work with React 15.
 
 
 ## Component Code Examples
@@ -162,4 +162,4 @@ npm run test-watch
 * Requires Node Version 4+ to run tests.
 
 ## License
-MIT
+This software is [MIT Licensed](/LICENSE).
